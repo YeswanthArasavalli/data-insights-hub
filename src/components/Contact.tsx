@@ -12,8 +12,8 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
-      title: "Message sent!",
-      description: "I'll get back to you shortly.",
+      title: "Message Sent!",
+      description: "Thanks for reaching out — I’ll get back to you shortly.",
     });
   };
 
@@ -25,7 +25,7 @@ const Contact = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
 
-          {/* HEADER */}
+          {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -47,18 +47,18 @@ const Contact = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1 text-[#25D366] hover:text-[#20BA5A] font-semibold transition-colors"
               >
-                <MessageCircle className="w-4 h-4" />
-                Click here to start a chat
+                <MessageCircle className="w-4 h-4" /> Click here to start a chat
               </a>
               <span>— I usually reply within 24 hours.</span>
             </p>
 
-            <div className="w-20 h-1 bg-gradient-primary mx-auto rounded-full mt-6"></div>
+            <div className="w-20 h-1 bg-gradient-primary mx-auto rounded-full mt-6" />
           </motion.div>
 
-          {/* CONTACT CARDS */}
+          {/* Contact Cards */}
           <div className="grid md:grid-cols-3 gap-6 mb-12">
 
+            {/* Email */}
             <Card className="p-6 text-center hover:shadow-medium transition-shadow">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
                 <Mail className="w-6 h-6 text-primary" />
@@ -72,6 +72,7 @@ const Contact = () => {
               </a>
             </Card>
 
+            {/* WhatsApp */}
             <Card className="p-6 text-center hover:shadow-medium transition-shadow">
               <div className="w-12 h-12 bg-[#25D366]/10 rounded-lg flex items-center justify-center mx-auto mb-4">
                 <MessageCircle className="w-6 h-6 text-[#25D366]" />
@@ -87,6 +88,7 @@ const Contact = () => {
               </a>
             </Card>
 
+            {/* Location */}
             <Card className="p-6 text-center hover:shadow-medium transition-shadow">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
                 <MapPin className="w-6 h-6 text-primary" />
@@ -95,9 +97,18 @@ const Contact = () => {
               <p className="text-muted-foreground">India (IST)</p>
             </Card>
 
+            {/* Availability */}
+            <Card className="p-6 text-center hover:shadow-medium transition-shadow">
+              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                <Clock className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="font-semibold mb-2">Availability</h3>
+              <p className="text-muted-foreground">Mon-Fri, 9AM-6PM IST</p>
+            </Card>
+
           </div>
 
-          {/* FORM */}
+          {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
