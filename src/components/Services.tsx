@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Database, LineChart, LayoutDashboard, Brain, Zap } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Services = () => {
   const services = [
@@ -57,26 +58,33 @@ const Services = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {services.map((service, index) => (
-              <Card
+              <motion.div
                 key={index}
-                className="p-6 hover:shadow-medium transition-all duration-300 hover:-translate-y-1 border-t-4 border-t-primary"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <div className="mb-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                    <service.icon className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                  <p className="text-muted-foreground mb-4">{service.description}</p>
-                  <p className="text-sm text-primary/80 italic">{service.example}</p>
-                </div>
-                <Button
-                  variant="outline"
-                  className="w-full hover:bg-primary hover:text-white transition-colors"
-                  onClick={scrollToContact}
+                <Card
+                  className="p-6 h-full flex flex-col hover:shadow-medium transition-all duration-300 hover:-translate-y-2 border-t-4 border-t-primary group"
                 >
-                  Request Service
-                </Button>
-              </Card>
+                  <div className="mb-4 flex-grow">
+                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                      <service.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{service.title}</h3>
+                    <p className="text-muted-foreground mb-4">{service.description}</p>
+                    <p className="text-sm text-primary/80 italic">{service.example}</p>
+                  </div>
+                  <Button
+                    variant="outline"
+                    className="w-full hover:bg-primary hover:text-white transition-colors"
+                    onClick={scrollToContact}
+                  >
+                    Request Service
+                  </Button>
+                </Card>
+              </motion.div>
             ))}
           </div>
 

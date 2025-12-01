@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Download, BarChart3, TrendingUp, Bot, Brain } from "lucide-react";
+import { motion } from "framer-motion";
 
 const About = () => {
   const highlights = [
@@ -36,7 +37,12 @@ const About = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
               <h3 className="text-2xl font-bold mb-6 gradient-text">
                 Data Analyst from India exploring Machine Learning & AI
               </h3>
@@ -54,11 +60,17 @@ const About = () => {
                 <Download className="mr-2 w-4 h-4" />
                 Download Resume
               </Button>
-            </div>
+            </motion.div>
 
-            <div className="grid grid-cols-1 gap-4">
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="grid grid-cols-1 gap-4"
+            >
               {highlights.map((highlight, index) => (
-                <Card key={index} className="p-6 hover:shadow-medium transition-shadow border-l-4 border-l-primary">
+                <Card key={index} className="p-6 hover:shadow-medium transition-all duration-300 hover:-translate-y-1 border-l-4 border-l-primary">
                   <div className="flex items-start gap-4">
                     <div className="p-3 bg-primary/10 rounded-lg">
                       <highlight.icon className="w-6 h-6 text-primary" />
@@ -70,7 +82,7 @@ const About = () => {
                   </div>
                 </Card>
               ))}
-            </div>
+            </motion.div>
           </div>
 
           <div className="bg-gradient-primary p-8 rounded-2xl text-white text-center">

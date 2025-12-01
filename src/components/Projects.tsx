@@ -1,33 +1,34 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Github, FileText } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Projects = () => {
   const projects = [
     {
       title: "Sales Performance Dashboard",
-      description: "Interactive Power BI dashboard analyzing 2 years of sales data with KPI tracking and trend visualization.",
+      description: "Comprehensive Power BI dashboard analyzing 2 years of sales data across multiple regions and product categories. Features interactive KPI tracking, trend visualization, and automated data refresh.",
+      achievement: "Reduced reporting time by 75% and improved data visibility for 50+ stakeholders.",
       tools: ["Power BI", "SQL", "Excel"],
-      github: "#",
-      live: "#",
-      case: "#",
+      projectUrl: "#",
+      codeUrl: "#",
     },
     {
       title: "Customer Segmentation Analysis",
-      description: "Python-based clustering analysis to identify customer segments for targeted marketing strategies.",
+      description: "Advanced Python-based clustering analysis using K-means and RFM methodology to identify distinct customer segments. Delivered actionable insights for targeted marketing campaigns.",
+      achievement: "Enabled 40% improvement in marketing ROI through precision-targeted campaigns.",
       tools: ["Python", "Pandas", "Scikit-Learn", "Matplotlib"],
-      github: "#",
-      live: "#",
-      case: "#",
+      projectUrl: "#",
+      codeUrl: "#",
     },
     {
       title: "Automated Reporting System",
-      description: "Python automation script that generates and emails weekly reports to stakeholders automatically.",
+      description: "End-to-end Python automation pipeline that extracts, transforms, and visualizes data, then generates and distributes weekly reports to stakeholders via email with zero manual intervention.",
+      achievement: "Saved 10+ hours per week in manual reporting and eliminated human errors.",
       tools: ["Python", "Pandas", "SMTP", "Schedule"],
-      github: "#",
-      live: "#",
-      case: "#",
+      projectUrl: "#",
+      codeUrl: "#",
     },
   ];
 
@@ -45,45 +46,70 @@ const Projects = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map((project, index) => (
-              <Card
+              <motion.div
                 key={index}
-                className="p-6 hover:shadow-medium transition-all duration-300 hover:-translate-y-1 flex flex-col"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <h3 className="text-xl font-bold mb-3">{project.title}</h3>
-                <p className="text-muted-foreground mb-4 flex-grow">{project.description}</p>
-                
-                <div className="mb-4">
-                  <p className="text-sm font-semibold mb-2">Tools Used:</p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tools.map((tool, i) => (
-                      <Badge key={i} variant="secondary" className="bg-primary/10 text-primary">
-                        {tool}
-                      </Badge>
-                    ))}
+                <Card
+                  className="p-6 h-full flex flex-col group hover:shadow-medium transition-all duration-300 hover:-translate-y-2 border-border/50 hover:border-primary/30"
+                >
+                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-3 leading-relaxed">
+                    {project.description}
+                  </p>
+                  
+                  <div className="mb-4 p-3 bg-primary/5 rounded-lg border border-primary/10">
+                    <p className="text-sm font-semibold text-primary flex items-start gap-2">
+                      <span className="text-lg">✓</span>
+                      <span>{project.achievement}</span>
+                    </p>
                   </div>
-                </div>
+                  
+                  <div className="mb-4">
+                    <p className="text-sm font-semibold mb-2">Tools Used:</p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tools.map((tool, i) => (
+                        <Badge 
+                          key={i} 
+                          variant="secondary" 
+                          className="bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+                        >
+                          {tool}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
 
-                <div className="flex gap-2">
-                  <Button size="sm" variant="outline" className="flex-1" asChild>
-                    <a href={project.github} target="_blank" rel="noopener noreferrer">
-                      <Github className="w-4 h-4 mr-1" />
-                      Code
-                    </a>
-                  </Button>
-                  <Button size="sm" variant="outline" className="flex-1" asChild>
-                    <a href={project.live} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="w-4 h-4 mr-1" />
-                      Live
-                    </a>
-                  </Button>
-                  <Button size="sm" variant="outline" className="flex-1" asChild>
-                    <a href={project.case} target="_blank" rel="noopener noreferrer">
-                      <FileText className="w-4 h-4 mr-1" />
-                      Case
-                    </a>
-                  </Button>
-                </div>
-              </Card>
+                  <div className="flex gap-3 mt-auto">
+                    <Button 
+                      size="sm" 
+                      className="flex-1 bg-primary hover:bg-primary/90" 
+                      asChild
+                    >
+                      <a href={project.projectUrl} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="w-4 h-4 mr-1" />
+                        View Project
+                      </a>
+                    </Button>
+                    <Button 
+                      size="sm" 
+                      variant="outline" 
+                      className="flex-1 hover:bg-primary/10" 
+                      asChild
+                    >
+                      <a href={project.codeUrl} target="_blank" rel="noopener noreferrer">
+                        <Github className="w-4 h-4 mr-1" />
+                        View Code
+                      </a>
+                    </Button>
+                  </div>
+                </Card>
+              </motion.div>
             ))}
           </div>
 

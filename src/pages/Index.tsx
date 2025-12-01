@@ -7,6 +7,7 @@ import Skills from "@/components/Skills";
 import Blog from "@/components/Blog";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const Index = () => {
   return (
@@ -20,6 +21,7 @@ const Index = () => {
       <Blog />
       <Contact />
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };
