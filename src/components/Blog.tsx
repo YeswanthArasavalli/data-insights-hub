@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Blog = () => {
   const posts = [
@@ -38,25 +39,32 @@ const Blog = () => {
 
           <div className="grid md:grid-cols-3 gap-6">
             {posts.map((post, index) => (
-              <Card
+              <motion.div
                 key={index}
-                className="p-6 hover:shadow-medium transition-all duration-300 hover:-translate-y-1 flex flex-col"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
-                  <Calendar className="w-4 h-4" />
-                  <span>{post.date}</span>
-                  <span>•</span>
-                  <span>{post.readTime}</span>
-                </div>
-                
-                <h3 className="text-xl font-bold mb-3">{post.title}</h3>
-                <p className="text-muted-foreground mb-4 flex-grow">{post.excerpt}</p>
-                
-                <Button variant="ghost" className="w-full justify-between group hover:text-primary">
-                  Read More
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Card>
+                <Card
+                  className="p-6 h-full hover:shadow-medium transition-all duration-300 hover:-translate-y-2 flex flex-col group border-border/50 hover:border-primary/30"
+                >
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
+                    <Calendar className="w-4 h-4" />
+                    <span>{post.date}</span>
+                    <span>•</span>
+                    <span>{post.readTime}</span>
+                  </div>
+                  
+                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{post.title}</h3>
+                  <p className="text-muted-foreground mb-4 flex-grow">{post.excerpt}</p>
+                  
+                  <Button variant="ghost" className="w-full justify-between group hover:text-primary">
+                    Read More
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Card>
+              </motion.div>
             ))}
           </div>
 

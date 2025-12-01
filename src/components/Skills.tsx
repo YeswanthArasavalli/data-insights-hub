@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
+import { motion } from "framer-motion";
 
 const Skills = () => {
   const skillGroups = [
@@ -39,20 +40,28 @@ const Skills = () => {
 
           <div className="grid md:grid-cols-2 gap-6 mb-12">
             {skillGroups.map((group, index) => (
-              <Card key={index} className="p-6 hover:shadow-medium transition-shadow">
-                <h3 className="text-xl font-bold mb-4 gradient-text">{group.category}</h3>
-                <div className="flex flex-wrap gap-2">
-                  {group.skills.map((skill, i) => (
-                    <Badge
-                      key={i}
-                      variant="outline"
-                      className={`${group.color} px-3 py-1 text-sm font-medium`}
-                    >
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </Card>
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card className="p-6 h-full hover:shadow-medium transition-all duration-300 hover:-translate-y-1">
+                  <h3 className="text-xl font-bold mb-4 gradient-text">{group.category}</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {group.skills.map((skill, i) => (
+                      <Badge
+                        key={i}
+                        variant="outline"
+                        className={`${group.color} px-3 py-1 text-sm font-medium hover:scale-105 transition-transform cursor-default`}
+                      >
+                        {skill}
+                      </Badge>
+                    ))}
+                  </div>
+                </Card>
+              </motion.div>
             ))}
           </div>
 
