@@ -160,4 +160,4 @@ const Contact = () => {
           </motion.div>
         </div>
       </div>
-    </section>
+    </section>)
