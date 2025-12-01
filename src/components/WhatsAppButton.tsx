@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
 const WhatsAppButton = () => {
-  const whatsappNumber = "<YOUR_NUMBER>"; // Replace with actual WhatsApp number
+  const whatsappNumber = "6303321322"; // Replace with actual WhatsApp number
   const whatsappUrl = `https://wa.me/${whatsappNumber}`;
 
   return (
