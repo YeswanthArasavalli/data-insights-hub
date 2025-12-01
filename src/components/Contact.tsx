@@ -1,4 +1,4 @@
-@@ -3,8 +3,9 @@ import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 
 const Contact = () => {
   const { toast } = useToast();
-@@ -40,51 +41,108 @@ const Contact = () => {
+const Contact = () => {
     });
   };
 
@@ -149,7 +149,7 @@ const Contact = () => {
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2">
-@@ -177,8 +235,9 @@ const Contact = () => {
+const Contact = () => {
               >
                 Send Message
               </Button>
