@@ -17,7 +17,7 @@ const Contact = () => {
     });
   };
 
-  const whatsappNumber = "6303321322";
+  const whatsappNumber = "+916303321322";
   const whatsappUrl = `https://wa.me/${whatsappNumber}`;
 
   return (
