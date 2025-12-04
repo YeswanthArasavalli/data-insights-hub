@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Github } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Projects = () => {
   const projects = [
@@ -101,7 +102,7 @@ const Projects = () => {
                     >
                       <a href={project.projectUrl} target="_blank" rel="noopener noreferrer">
                         <ExternalLink className="w-4 h-4 mr-1" />
-                        View Project
+                        102
                       </a>
                     </Button>
                     <Button 
